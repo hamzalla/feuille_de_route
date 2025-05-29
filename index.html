@@ -114,6 +114,58 @@
         margin-bottom: 10px;
       }
 
+      .filters {
+        display: flex;
+        gap: 15px;
+        margin-bottom: 30px;
+        flex-wrap: wrap;
+        background: #f8f9fa;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      }
+
+      .filter-group {
+        display: flex;
+        flex-direction: column;
+        min-width: 200px;
+      }
+
+      .filter-group label {
+        margin-bottom: 8px;
+        font-weight: bold;
+        color: #2c3e50;
+      }
+
+      .filter-group select {
+        padding: 10px;
+        border-radius: 5px;
+        border: 1px solid #ddd;
+        background: white;
+        font-size: 14px;
+      }
+
+      .filter-group select:focus {
+        outline: none;
+        border-color: #27ae60;
+        box-shadow: 0 0 0 2px rgba(39, 174, 96, 0.2);
+      }
+
+      .reset-filters {
+        align-self: flex-end;
+        padding: 10px 15px;
+        background: #e74c3c;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background 0.3s;
+      }
+
+      .reset-filters:hover {
+        background: #c0392b;
+      }
+
       .section {
         margin-bottom: 40px;
         background: white;
@@ -226,6 +278,11 @@
         color: #721c24;
       }
 
+      .status-planned {
+        background: #e2e3e5;
+        color: #383d41;
+      }
+
       .task-date {
         font-size: 0.9em;
         color: #27ae60;
@@ -288,6 +345,10 @@
         flex-shrink: 0;
       }
 
+      .hidden {
+        display: none;
+      }
+
       @media (max-width: 768px) {
         .container {
           margin: 10px;
@@ -312,6 +373,19 @@
 
         .section-content {
           padding: 20px;
+        }
+
+        .filters {
+          flex-direction: column;
+          gap: 10px;
+        }
+
+        .filter-group {
+          width: 100%;
+        }
+
+        .reset-filters {
+          align-self: flex-start;
         }
       }
     </style>
@@ -342,11 +416,46 @@
           </div>
         </div>
 
+        <div class="filters">
+          <div class="filter-group">
+            <label for="status-filter">Filtrer par statut:</label>
+            <select id="status-filter">
+              <option value="all">Tous les statuts</option>
+              <option value="pending">En attente</option>
+              <option value="in-progress">En cours</option>
+              <option value="completed">Terminé</option>
+              <option value="blocked">Bloquant</option>
+              <option value="planned">Planifié</option>
+            </select>
+          </div>
+
+          <div class="filter-group">
+            <label for="week-filter">Filtrer par semaine:</label>
+            <select id="week-filter">
+              <option value="all">Toutes les semaines</option>
+              <option value="1-2">Semaines 1-2 (Juin 2025)</option>
+              <option value="2-3">Semaines 2-3 (Juin 2025)</option>
+              <option value="3-4">Semaines 3-4 (Juin 2025)</option>
+              <option value="4-5">Semaines 4-5 (Juin 2025)</option>
+              <option value="5-6">Semaines 5-6 (Juillet 2025)</option>
+              <option value="7-8">Semaines 7-8 (Juillet 2025)</option>
+            </select>
+          </div>
+
+          <button class="reset-filters" id="reset-filters">
+            Réinitialiser les filtres
+          </button>
+        </div>
+
         <div class="section">
           <div class="section-header">📅 Ateliers et Réunions Prioritaires</div>
           <div class="section-content">
             <div class="task-grid">
-              <div class="task-item priority-high">
+              <div
+                class="task-item priority-high"
+                data-status="pending"
+                data-week="1-2"
+              >
                 <div class="task-title">Atelier Formules de Calcul</div>
                 <div class="task-details">
                   Définir et valider les formules de calcul des subventions avec
@@ -363,7 +472,11 @@
                 <div class="status-badge status-pending">En attente</div>
               </div>
 
-              <div class="task-item priority-high">
+              <div
+                class="task-item priority-high"
+                data-status="pending"
+                data-week="2-3"
+              >
                 <div class="task-title">Validation des Workflows</div>
                 <div class="task-details">
                   Valider les workflows de chaque subvention et définir les
@@ -379,7 +492,11 @@
                 <div class="status-badge status-pending">En attente</div>
               </div>
 
-              <div class="task-item priority-medium">
+              <div
+                class="task-item priority-medium"
+                data-status="planned"
+                data-week="4-5"
+              >
                 <div class="task-title">Gestion de l'Éligibilité</div>
                 <div class="task-details">
                   Définir les critères d'éligibilité des agriculteurs et la
@@ -393,10 +510,14 @@
                 </div>
                 <div class="task-date">📅 Semaine 4-5 (Juin 2025)</div>
                 <div class="responsible">Netopia + DF</div>
-                <div class="status-badge status-pending">Planifié</div>
+                <div class="status-badge status-planned">Planifié</div>
               </div>
 
-              <div class="task-item priority-medium">
+              <div
+                class="task-item priority-medium"
+                data-status="planned"
+                data-week="7-8"
+              >
                 <div class="task-title">Tests et Validation</div>
                 <div class="task-details">
                   Organiser les sessions de test et valider toutes les
@@ -409,7 +530,7 @@
                 </div>
                 <div class="task-date">📅 Semaine 7-8 (Juillet 2025)</div>
                 <div class="responsible">Netopia + DF</div>
-                <div class="status-badge status-pending">Planifié</div>
+                <div class="status-badge status-planned">Planifié</div>
               </div>
             </div>
           </div>
@@ -419,7 +540,11 @@
           <div class="section-header">⚙️ Actions Techniques et Livrables</div>
           <div class="section-content">
             <div class="task-grid">
-              <div class="task-item priority-high">
+              <div
+                class="task-item priority-high"
+                data-status="in-progress"
+                data-week="1-2"
+              >
                 <div class="task-title">Modèles de Récépissé</div>
                 <div class="task-details">
                   Mise en place et intégration des modèles de récépissé fournis
@@ -435,7 +560,11 @@
                 <div class="status-badge status-in-progress">En cours</div>
               </div>
 
-              <div class="task-item priority-high">
+              <div
+                class="task-item priority-high"
+                data-status="pending"
+                data-week="2-4"
+              >
                 <div class="task-title">Référentiel des Subventions</div>
                 <div class="task-details">
                   Implémentation complète du référentiel et du paramétrage des
@@ -451,7 +580,11 @@
                 <div class="status-badge status-pending">En attente</div>
               </div>
 
-              <div class="task-item priority-medium">
+              <div
+                class="task-item priority-medium"
+                data-status="planned"
+                data-week="3-4"
+              >
                 <div class="task-title">Formulaire de Dépôt</div>
                 <div class="task-details">
                   Intégrer toutes les modifications demandées sur le formulaire
@@ -464,10 +597,14 @@
                 </div>
                 <div class="task-date">📅 Semaine 3-4 (Juin 2025)</div>
                 <div class="responsible">Netopia</div>
-                <div class="status-badge status-pending">Planifié</div>
+                <div class="status-badge status-planned">Planifié</div>
               </div>
 
-              <div class="task-item priority-low">
+              <div
+                class="task-item priority-low"
+                data-status="planned"
+                data-week="5-6"
+              >
                 <div class="task-title">Notifications SMS</div>
                 <div class="task-details">
                   Présenter un devis détaillé pour le système de notifications
@@ -480,10 +617,14 @@
                 </div>
                 <div class="task-date">📅 Semaine 5-6 (Juillet 2025)</div>
                 <div class="responsible">Netopia</div>
-                <div class="status-badge status-pending">Planifié</div>
+                <div class="status-badge status-planned">Planifié</div>
               </div>
 
-              <div class="task-item priority-high">
+              <div
+                class="task-item priority-high"
+                data-status="in-progress"
+                data-week="1"
+              >
                 <div class="task-title">Statuts de Traitement</div>
                 <div class="task-details">
                   Fournir le fichier Excel contenant tous les statuts du
@@ -499,7 +640,11 @@
                 <div class="status-badge status-in-progress">En cours</div>
               </div>
 
-              <div class="task-item priority-high">
+              <div
+                class="task-item priority-high"
+                data-status="pending"
+                data-week="1"
+              >
                 <div class="task-title">Infrastructure Technique</div>
                 <div class="task-details">
                   Fourniture du SIG (Système d'Information Géographique) et
@@ -522,7 +667,11 @@
           <div class="section-header">⚠️ Points Critiques et Dépendances</div>
           <div class="section-content">
             <div class="task-grid">
-              <div class="task-item priority-high">
+              <div
+                class="task-item priority-high"
+                data-status="blocked"
+                data-week="1"
+              >
                 <div class="task-title">Accès aux Systèmes</div>
                 <div class="task-details">
                   <strong>Bloquant :</strong> Nécessité d'obtenir les accès au
@@ -540,7 +689,11 @@
                 <div class="status-badge status-blocked">Bloquant</div>
               </div>
 
-              <div class="task-item priority-high">
+              <div
+                class="task-item priority-high"
+                data-status="pending"
+                data-week="1"
+              >
                 <div class="task-title">Retours et Remarques</div>
                 <div class="task-details">
                   <strong>En attente :</strong> Transmission des remarques
@@ -598,5 +751,47 @@
         </div>
       </div>
     </div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const statusFilter = document.getElementById("status-filter");
+        const weekFilter = document.getElementById("week-filter");
+        const resetButton = document.getElementById("reset-filters");
+        const taskItems = document.querySelectorAll(".task-item");
+
+        function applyFilters() {
+          const selectedStatus = statusFilter.value;
+          const selectedWeek = weekFilter.value;
+
+          taskItems.forEach((task) => {
+            const taskStatus = task.getAttribute("data-status");
+            const taskWeek = task.getAttribute("data-week");
+
+            const statusMatch =
+              selectedStatus === "all" || taskStatus === selectedStatus;
+            const weekMatch =
+              selectedWeek === "all" || taskWeek === selectedWeek;
+
+            if (statusMatch && weekMatch) {
+              task.classList.remove("hidden");
+            } else {
+              task.classList.add("hidden");
+            }
+          });
+        }
+
+        statusFilter.addEventListener("change", applyFilters);
+        weekFilter.addEventListener("change", applyFilters);
+
+        resetButton.addEventListener("click", function () {
+          statusFilter.value = "all";
+          weekFilter.value = "all";
+          applyFilters();
+        });
+
+        // Apply filters on page load (in case there are URL parameters etc.)
+        applyFilters();
+      });
+    </script>
   </body>
 </html>
