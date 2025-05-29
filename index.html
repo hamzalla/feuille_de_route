@@ -345,6 +345,188 @@
         flex-shrink: 0;
       }
 
+      /* Gantt Chart Styles */
+      .gantt-container {
+        margin: 30px 0;
+        overflow-x: auto;
+      }
+
+      .gantt-header {
+        display: flex;
+        margin-left: 200px;
+        background: #f8f9fa;
+        border-radius: 8px 8px 0 0;
+        overflow: hidden;
+      }
+
+      .gantt-header-item {
+        flex: 1;
+        min-width: 60px;
+        text-align: center;
+        padding: 10px 5px;
+        font-weight: bold;
+        border-right: 1px solid #ddd;
+        background: linear-gradient(135deg, #1e8449 0%, #27ae60 100%);
+        color: white;
+      }
+
+      .gantt-body {
+        border: 1px solid #ddd;
+        border-radius: 0 0 8px 8px;
+        overflow: hidden;
+      }
+
+      .gantt-row {
+        display: flex;
+        border-bottom: 1px solid #eee;
+      }
+
+      .gantt-row:last-child {
+        border-bottom: none;
+      }
+
+      .gantt-row-label {
+        width: 200px;
+        padding: 10px;
+        background: #f8f9fa;
+        font-weight: bold;
+        display: flex;
+        align-items: center;
+        border-right: 1px solid #ddd;
+      }
+
+      .gantt-row-bars {
+        display: flex;
+        flex: 1;
+        position: relative;
+        height: 40px;
+      }
+
+      .gantt-bar {
+        position: absolute;
+        height: 60%;
+        top: 20%;
+        border-radius: 4px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 12px;
+        font-weight: bold;
+        padding: 0 5px;
+        box-sizing: border-box;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+
+      .gantt-bar.pending {
+        background: #fff3cd;
+        color: #856404;
+      }
+
+      .gantt-bar.in-progress {
+        background: #cce5ff;
+        color: #004085;
+      }
+
+      .gantt-bar.completed {
+        background: #d4edda;
+        color: #155724;
+      }
+
+      .gantt-bar.blocked {
+        background: #f8d7da;
+        color: #721c24;
+      }
+
+      .gantt-bar.planned {
+        background: #e2e3e5;
+        color: #383d41;
+      }
+
+      .gantt-bar.high {
+        border-left: 3px solid #e74c3c;
+      }
+
+      .gantt-bar.medium {
+        border-left: 3px solid #f39c12;
+      }
+
+      .gantt-bar.low {
+        border-left: 3px solid #27ae60;
+      }
+
+      .gantt-legend {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 15px;
+        margin-top: 20px;
+        justify-content: center;
+      }
+
+      .gantt-legend-item {
+        display: flex;
+        align-items: center;
+        font-size: 14px;
+      }
+
+      .gantt-legend-color {
+        width: 20px;
+        height: 20px;
+        border-radius: 4px;
+        margin-right: 8px;
+      }
+
+      .gantt-legend-priority {
+        display: flex;
+        align-items: center;
+        margin-left: 15px;
+      }
+
+      .gantt-legend-priority-line {
+        width: 20px;
+        height: 3px;
+        margin-right: 8px;
+      }
+
+      /* Tabs Styles */
+      .tabs {
+        display: flex;
+        margin-bottom: 20px;
+        border-bottom: 1px solid #ddd;
+      }
+
+      .tab {
+        padding: 12px 20px;
+        cursor: pointer;
+        background: #f8f9fa;
+        border: 1px solid #ddd;
+        border-bottom: none;
+        border-radius: 5px 5px 0 0;
+        margin-right: 5px;
+        font-weight: bold;
+        transition: all 0.3s ease;
+      }
+
+      .tab:hover {
+        background: #e9ecef;
+      }
+
+      .tab.active {
+        background: #27ae60;
+        color: white;
+        border-color: #27ae60;
+      }
+
+      .tab-content {
+        display: none;
+      }
+
+      .tab-content.active {
+        display: block;
+      }
+
       .hidden {
         display: none;
       }
@@ -386,6 +568,24 @@
 
         .reset-filters {
           align-self: flex-start;
+        }
+
+        .gantt-header {
+          margin-left: 150px;
+        }
+
+        .gantt-row-label {
+          width: 150px;
+        }
+
+        .tabs {
+          flex-wrap: wrap;
+        }
+
+        .tab {
+          flex: 1;
+          text-align: center;
+          margin-bottom: 5px;
         }
       }
     </style>
@@ -447,266 +647,401 @@
           </button>
         </div>
 
-        <div class="section">
-          <div class="section-header">📅 Ateliers et Réunions Prioritaires</div>
-          <div class="section-content">
-            <div class="task-grid">
-              <div
-                class="task-item priority-high"
-                data-status="pending"
-                data-week="1-2"
-              >
-                <div class="task-title">Atelier Formules de Calcul</div>
-                <div class="task-details">
-                  Définir et valider les formules de calcul des subventions avec
-                  les équipes techniques
-                </div>
-                <div class="task-description">
-                  • Établir les critères de calcul pour chaque type de
-                  subvention<br />
-                  • Valider les barèmes avec la Direction Financière<br />
-                  • Documenter les règles de calcul automatisé
-                </div>
-                <div class="task-date">📅 Semaine 1-2 (Juin 2025)</div>
-                <div class="responsible">Netopia + DSI</div>
-                <div class="status-badge status-pending">En attente</div>
-              </div>
+        <!-- Tabs Navigation -->
+        <div class="tabs">
+          <div class="tab active" data-tab="details-tab">
+            Détails des Tâches
+          </div>
+          <div class="tab" data-tab="gantt-tab">Diagramme de Gantt</div>
+        </div>
 
-              <div
-                class="task-item priority-high"
-                data-status="pending"
-                data-week="2-3"
-              >
-                <div class="task-title">Validation des Workflows</div>
-                <div class="task-details">
-                  Valider les workflows de chaque subvention et définir les
-                  délais de traitement
+        <!-- Details Tab Content -->
+        <div id="details-tab" class="tab-content">
+          <div class="section">
+            <div class="section-header">
+              📅 Ateliers et Réunions Prioritaires
+            </div>
+            <div class="section-content">
+              <div class="task-grid">
+                <div
+                  class="task-item priority-high"
+                  data-status="pending"
+                  data-week="1-2"
+                  data-gantt-label="Atelier Formules de Calcul"
+                  data-gantt-start="1"
+                  data-gantt-end="2"
+                >
+                  <div class="task-title">Atelier Formules de Calcul</div>
+                  <div class="task-details">
+                    Définir et valider les formules de calcul des subventions
+                    avec les équipes techniques
+                  </div>
+                  <div class="task-description">
+                    • Établir les critères de calcul pour chaque type de
+                    subvention<br />
+                    • Valider les barèmes avec la Direction Financière<br />
+                    • Documenter les règles de calcul automatisé
+                  </div>
+                  <div class="task-date">📅 Semaine 1-2 (Juin 2025)</div>
+                  <div class="responsible">Netopia + DSI</div>
+                  <div class="status-badge status-pending">En attente</div>
                 </div>
-                <div class="task-description">
-                  • Cartographier le processus complet de traitement<br />
-                  • Définir les étapes de validation et d'approbation<br />
-                  • Fixer les SLA pour chaque étape du workflow
-                </div>
-                <div class="task-date">📅 Semaine 2-3 (Juin 2025)</div>
-                <div class="responsible">Netopia + DSI</div>
-                <div class="status-badge status-pending">En attente</div>
-              </div>
 
-              <div
-                class="task-item priority-medium"
-                data-status="planned"
-                data-week="4-5"
-              >
-                <div class="task-title">Gestion de l'Éligibilité</div>
-                <div class="task-details">
-                  Définir les critères d'éligibilité des agriculteurs et la
-                  gestion des compteurs de dépôt
+                <div
+                  class="task-item priority-high"
+                  data-status="pending"
+                  data-week="2-3"
+                  data-gantt-label="Validation des Workflows"
+                  data-gantt-start="2"
+                  data-gantt-end="3"
+                >
+                  <div class="task-title">Validation des Workflows</div>
+                  <div class="task-details">
+                    Valider les workflows de chaque subvention et définir les
+                    délais de traitement
+                  </div>
+                  <div class="task-description">
+                    • Cartographier le processus complet de traitement<br />
+                    • Définir les étapes de validation et d'approbation<br />
+                    • Fixer les SLA pour chaque étape du workflow
+                  </div>
+                  <div class="task-date">📅 Semaine 2-3 (Juin 2025)</div>
+                  <div class="responsible">Netopia + DSI</div>
+                  <div class="status-badge status-pending">En attente</div>
                 </div>
-                <div class="task-description">
-                  • Paramétrer les critères d'éligibilité par type
-                  d'exploitation<br />
-                  • Configurer les limitations de dépôt par période<br />
-                  • Intégrer les contrôles automatiques d'éligibilité
-                </div>
-                <div class="task-date">📅 Semaine 4-5 (Juin 2025)</div>
-                <div class="responsible">Netopia + DF</div>
-                <div class="status-badge status-planned">Planifié</div>
-              </div>
 
-              <div
-                class="task-item priority-medium"
-                data-status="planned"
-                data-week="7-8"
-              >
-                <div class="task-title">Tests et Validation</div>
-                <div class="task-details">
-                  Organiser les sessions de test et valider toutes les
-                  modifications implémentées
+                <div
+                  class="task-item priority-medium"
+                  data-status="planned"
+                  data-week="4-5"
+                  data-gantt-label="Gestion de l'Éligibilité"
+                  data-gantt-start="4"
+                  data-gantt-end="5"
+                >
+                  <div class="task-title">Gestion de l'Éligibilité</div>
+                  <div class="task-details">
+                    Définir les critères d'éligibilité des agriculteurs et la
+                    gestion des compteurs de dépôt
+                  </div>
+                  <div class="task-description">
+                    • Paramétrer les critères d'éligibilité par type
+                    d'exploitation<br />
+                    • Configurer les limitations de dépôt par période<br />
+                    • Intégrer les contrôles automatiques d'éligibilité
+                  </div>
+                  <div class="task-date">📅 Semaine 4-5 (Juin 2025)</div>
+                  <div class="responsible">Netopia + DF</div>
+                  <div class="status-badge status-planned">Planifié</div>
                 </div>
-                <div class="task-description">
-                  • Tests unitaires des nouvelles fonctionnalités<br />
-                  • Tests d'intégration avec les systèmes existants<br />
-                  • Validation utilisateur avec la DF
+
+                <div
+                  class="task-item priority-medium"
+                  data-status="planned"
+                  data-week="7-8"
+                  data-gantt-label="Tests et Validation"
+                  data-gantt-start="7"
+                  data-gantt-end="8"
+                >
+                  <div class="task-title">Tests et Validation</div>
+                  <div class="task-details">
+                    Organiser les sessions de test et valider toutes les
+                    modifications implémentées
+                  </div>
+                  <div class="task-description">
+                    • Tests unitaires des nouvelles fonctionnalités<br />
+                    • Tests d'intégration avec les systèmes existants<br />
+                    • Validation utilisateur avec la DF
+                  </div>
+                  <div class="task-date">📅 Semaine 7-8 (Juillet 2025)</div>
+                  <div class="responsible">Netopia + DF</div>
+                  <div class="status-badge status-planned">Planifié</div>
                 </div>
-                <div class="task-date">📅 Semaine 7-8 (Juillet 2025)</div>
-                <div class="responsible">Netopia + DF</div>
-                <div class="status-badge status-planned">Planifié</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="section">
+            <div class="section-header">⚙️ Actions Techniques et Livrables</div>
+            <div class="section-content">
+              <div class="task-grid">
+                <div
+                  class="task-item priority-high"
+                  data-status="in-progress"
+                  data-week="1-2"
+                  data-gantt-label="Modèles de Récépissé"
+                  data-gantt-start="1"
+                  data-gantt-end="2"
+                >
+                  <div class="task-title">Modèles de Récépissé</div>
+                  <div class="task-details">
+                    Mise en place et intégration des modèles de récépissé
+                    fournis par la DF
+                  </div>
+                  <div class="task-description">
+                    • Intégrer les templates de récépissé dans le système<br />
+                    • Configurer la génération automatique<br />
+                    • Tester l'impression et l'envoi électronique
+                  </div>
+                  <div class="task-date">📅 Semaine 1-2 (Juin 2025)</div>
+                  <div class="responsible">Netopia</div>
+                  <div class="status-badge status-in-progress">En cours</div>
+                </div>
+
+                <div
+                  class="task-item priority-high"
+                  data-status="pending"
+                  data-week="2-4"
+                  data-gantt-label="Référentiel des Subventions"
+                  data-gantt-start="2"
+                  data-gantt-end="4"
+                >
+                  <div class="task-title">Référentiel des Subventions</div>
+                  <div class="task-details">
+                    Implémentation complète du référentiel et du paramétrage des
+                    subventions
+                  </div>
+                  <div class="task-description">
+                    • Créer la base de données des types de subventions<br />
+                    • Paramétrer les montants et critères par région<br />
+                    • Implémenter l'interface de gestion du référentiel
+                  </div>
+                  <div class="task-date">📅 Semaine 2-4 (Juin 2025)</div>
+                  <div class="responsible">Netopia</div>
+                  <div class="status-badge status-pending">En attente</div>
+                </div>
+
+                <div
+                  class="task-item priority-medium"
+                  data-status="planned"
+                  data-week="3-4"
+                  data-gantt-label="Formulaire de Dépôt"
+                  data-gantt-start="3"
+                  data-gantt-end="4"
+                >
+                  <div class="task-title">Formulaire de Dépôt</div>
+                  <div class="task-details">
+                    Intégrer toutes les modifications demandées sur le
+                    formulaire de dépôt de dossier
+                  </div>
+                  <div class="task-description">
+                    • Ajouter les nouveaux champs demandés<br />
+                    • Améliorer la validation des données<br />
+                    • Optimiser l'interface utilisateur
+                  </div>
+                  <div class="task-date">📅 Semaine 3-4 (Juin 2025)</div>
+                  <div class="responsible">Netopia</div>
+                  <div class="status-badge status-planned">Planifié</div>
+                </div>
+
+                <div
+                  class="task-item priority-low"
+                  data-status="planned"
+                  data-week="5-6"
+                  data-gantt-label="Notifications SMS"
+                  data-gantt-start="5"
+                  data-gantt-end="6"
+                >
+                  <div class="task-title">Notifications SMS</div>
+                  <div class="task-details">
+                    Présenter un devis détaillé pour le système de notifications
+                    SMS
+                  </div>
+                  <div class="task-description">
+                    • Analyser les coûts par SMS et volume mensuel<br />
+                    • Proposer différentes options de fournisseurs<br />
+                    • Estimer l'intégration technique
+                  </div>
+                  <div class="task-date">📅 Semaine 5-6 (Juillet 2025)</div>
+                  <div class="responsible">Netopia</div>
+                  <div class="status-badge status-planned">Planifié</div>
+                </div>
+
+                <div
+                  class="task-item priority-high"
+                  data-status="in-progress"
+                  data-week="1"
+                  data-gantt-label="Statuts de Traitement"
+                  data-gantt-start="1"
+                  data-gantt-end="1"
+                >
+                  <div class="task-title">Statuts de Traitement</div>
+                  <div class="task-details">
+                    Fournir le fichier Excel contenant tous les statuts du
+                    traitement de dossier
+                  </div>
+                  <div class="task-description">
+                    • Compiler tous les statuts possibles<br />
+                    • Définir les transitions entre statuts<br />
+                    • Documenter les actions associées à chaque statut
+                  </div>
+                  <div class="task-date">📅 Semaine 1 (Juin 2025)</div>
+                  <div class="responsible">Direction Financière</div>
+                  <div class="status-badge status-in-progress">En cours</div>
+                </div>
+
+                <div
+                  class="task-item priority-high"
+                  data-status="pending"
+                  data-week="1"
+                  data-gantt-label="Infrastructure Technique"
+                  data-gantt-start="1"
+                  data-gantt-end="1"
+                >
+                  <div class="task-title">Infrastructure Technique</div>
+                  <div class="task-details">
+                    Fourniture du SIG (Système d'Information Géographique) et
+                    configuration du serveur SMTP
+                  </div>
+                  <div class="task-description">
+                    • Configurer l'accès au serveur SIG<br />
+                    • Paramétrer le serveur SMTP pour les emails<br />
+                    • Tester la connectivité et les performances
+                  </div>
+                  <div class="task-date">📅 Semaine 1 (Juin 2025)</div>
+                  <div class="responsible">DSI</div>
+                  <div class="status-badge status-pending">En attente</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="section">
+            <div class="section-header">⚠️ Points Critiques et Dépendances</div>
+            <div class="section-content">
+              <div class="task-grid">
+                <div
+                  class="task-item priority-high"
+                  data-status="blocked"
+                  data-week="1"
+                  data-gantt-label="Accès aux Systèmes"
+                  data-gantt-start="1"
+                  data-gantt-end="1"
+                >
+                  <div class="task-title">Accès aux Systèmes</div>
+                  <div class="task-details">
+                    <strong>Bloquant :</strong> Nécessité d'obtenir les accès au
+                    SIG et la configuration du serveur SMTP pour poursuivre le
+                    développement
+                  </div>
+                  <div class="task-description">
+                    • Accès sécurisé au serveur SIG avec droits appropriés<br />
+                    • Configuration complète du serveur SMTP (authentification,
+                    ports, etc.)<br />
+                    • Documentation technique des APIs disponibles
+                  </div>
+                  <div class="task-date">🚨 URGENT - Semaine 1 (Juin 2025)</div>
+                  <div class="responsible">DSI</div>
+                  <div class="status-badge status-blocked">Bloquant</div>
+                </div>
+
+                <div
+                  class="task-item priority-high"
+                  data-status="pending"
+                  data-week="1"
+                  data-gantt-label="Retours et Remarques"
+                  data-gantt-start="1"
+                  data-gantt-end="1"
+                >
+                  <div class="task-title">Retours et Remarques</div>
+                  <div class="task-details">
+                    <strong>En attente :</strong> Transmission des remarques
+                    relevées lors de la réunion du 21/05/2025
+                  </div>
+                  <div class="task-description">
+                    • Compilation des remarques de chaque partie prenante<br />
+                    • Priorisation des modifications demandées<br />
+                    • Impact des changements sur le planning global
+                  </div>
+                  <div class="task-date">📅 Semaine 1 (Juin 2025)</div>
+                  <div class="responsible">Toutes les parties</div>
+                  <div class="status-badge status-pending">En attente</div>
+                </div>
               </div>
             </div>
           </div>
         </div>
 
-        <div class="section">
-          <div class="section-header">⚙️ Actions Techniques et Livrables</div>
-          <div class="section-content">
-            <div class="task-grid">
-              <div
-                class="task-item priority-high"
-                data-status="in-progress"
-                data-week="1-2"
-              >
-                <div class="task-title">Modèles de Récépissé</div>
-                <div class="task-details">
-                  Mise en place et intégration des modèles de récépissé fournis
-                  par la DF
+        <!-- Gantt Tab Content -->
+        <div id="gantt-tab" class="tab-content active">
+          <div class="section">
+            <div class="section-header">📊 Diagramme de Gantt</div>
+            <div class="section-content">
+              <div class="gantt-container">
+                <div class="gantt-header">
+                  <div class="gantt-header-item">Sem 1</div>
+                  <div class="gantt-header-item">Sem 2</div>
+                  <div class="gantt-header-item">Sem 3</div>
+                  <div class="gantt-header-item">Sem 4</div>
+                  <div class="gantt-header-item">Sem 5</div>
+                  <div class="gantt-header-item">Sem 6</div>
+                  <div class="gantt-header-item">Sem 7</div>
+                  <div class="gantt-header-item">Sem 8</div>
                 </div>
-                <div class="task-description">
-                  • Intégrer les templates de récépissé dans le système<br />
-                  • Configurer la génération automatique<br />
-                  • Tester l'impression et l'envoi électronique
+                <div class="gantt-body" id="gantt-chart">
+                  <!-- Gantt rows will be inserted here by JavaScript -->
                 </div>
-                <div class="task-date">📅 Semaine 1-2 (Juin 2025)</div>
-                <div class="responsible">Netopia</div>
-                <div class="status-badge status-in-progress">En cours</div>
               </div>
 
-              <div
-                class="task-item priority-high"
-                data-status="pending"
-                data-week="2-4"
-              >
-                <div class="task-title">Référentiel des Subventions</div>
-                <div class="task-details">
-                  Implémentation complète du référentiel et du paramétrage des
-                  subventions
+              <div class="gantt-legend">
+                <div class="gantt-legend-item">
+                  <div
+                    class="gantt-legend-color"
+                    style="background: #fff3cd"
+                  ></div>
+                  <span>En attente</span>
                 </div>
-                <div class="task-description">
-                  • Créer la base de données des types de subventions<br />
-                  • Paramétrer les montants et critères par région<br />
-                  • Implémenter l'interface de gestion du référentiel
+                <div class="gantt-legend-item">
+                  <div
+                    class="gantt-legend-color"
+                    style="background: #cce5ff"
+                  ></div>
+                  <span>En cours</span>
                 </div>
-                <div class="task-date">📅 Semaine 2-4 (Juin 2025)</div>
-                <div class="responsible">Netopia</div>
-                <div class="status-badge status-pending">En attente</div>
-              </div>
+                <div class="gantt-legend-item">
+                  <div
+                    class="gantt-legend-color"
+                    style="background: #d4edda"
+                  ></div>
+                  <span>Terminé</span>
+                </div>
+                <div class="gantt-legend-item">
+                  <div
+                    class="gantt-legend-color"
+                    style="background: #f8d7da"
+                  ></div>
+                  <span>Bloquant</span>
+                </div>
+                <div class="gantt-legend-item">
+                  <div
+                    class="gantt-legend-color"
+                    style="background: #e2e3e5"
+                  ></div>
+                  <span>Planifié</span>
+                </div>
 
-              <div
-                class="task-item priority-medium"
-                data-status="planned"
-                data-week="3-4"
-              >
-                <div class="task-title">Formulaire de Dépôt</div>
-                <div class="task-details">
-                  Intégrer toutes les modifications demandées sur le formulaire
-                  de dépôt de dossier
+                <div class="gantt-legend-priority">
+                  <div class="gantt-legend-priority-item">
+                    <div
+                      class="gantt-legend-priority-line"
+                      style="background: #e74c3c"
+                    ></div>
+                    <span>Haute</span>
+                  </div>
+                  <div class="gantt-legend-priority-item">
+                    <div
+                      class="gantt-legend-priority-line"
+                      style="background: #f39c12"
+                    ></div>
+                    <span>Moyenne</span>
+                  </div>
+                  <div class="gantt-legend-priority-item">
+                    <div
+                      class="gantt-legend-priority-line"
+                      style="background: #27ae60"
+                    ></div>
+                    <span>Basse</span>
+                  </div>
                 </div>
-                <div class="task-description">
-                  • Ajouter les nouveaux champs demandés<br />
-                  • Améliorer la validation des données<br />
-                  • Optimiser l'interface utilisateur
-                </div>
-                <div class="task-date">📅 Semaine 3-4 (Juin 2025)</div>
-                <div class="responsible">Netopia</div>
-                <div class="status-badge status-planned">Planifié</div>
-              </div>
-
-              <div
-                class="task-item priority-low"
-                data-status="planned"
-                data-week="5-6"
-              >
-                <div class="task-title">Notifications SMS</div>
-                <div class="task-details">
-                  Présenter un devis détaillé pour le système de notifications
-                  SMS
-                </div>
-                <div class="task-description">
-                  • Analyser les coûts par SMS et volume mensuel<br />
-                  • Proposer différentes options de fournisseurs<br />
-                  • Estimer l'intégration technique
-                </div>
-                <div class="task-date">📅 Semaine 5-6 (Juillet 2025)</div>
-                <div class="responsible">Netopia</div>
-                <div class="status-badge status-planned">Planifié</div>
-              </div>
-
-              <div
-                class="task-item priority-high"
-                data-status="in-progress"
-                data-week="1"
-              >
-                <div class="task-title">Statuts de Traitement</div>
-                <div class="task-details">
-                  Fournir le fichier Excel contenant tous les statuts du
-                  traitement de dossier
-                </div>
-                <div class="task-description">
-                  • Compiler tous les statuts possibles<br />
-                  • Définir les transitions entre statuts<br />
-                  • Documenter les actions associées à chaque statut
-                </div>
-                <div class="task-date">📅 Semaine 1 (Juin 2025)</div>
-                <div class="responsible">Direction Financière</div>
-                <div class="status-badge status-in-progress">En cours</div>
-              </div>
-
-              <div
-                class="task-item priority-high"
-                data-status="pending"
-                data-week="1"
-              >
-                <div class="task-title">Infrastructure Technique</div>
-                <div class="task-details">
-                  Fourniture du SIG (Système d'Information Géographique) et
-                  configuration du serveur SMTP
-                </div>
-                <div class="task-description">
-                  • Configurer l'accès au serveur SIG<br />
-                  • Paramétrer le serveur SMTP pour les emails<br />
-                  • Tester la connectivité et les performances
-                </div>
-                <div class="task-date">📅 Semaine 1 (Juin 2025)</div>
-                <div class="responsible">DSI</div>
-                <div class="status-badge status-pending">En attente</div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="section">
-          <div class="section-header">⚠️ Points Critiques et Dépendances</div>
-          <div class="section-content">
-            <div class="task-grid">
-              <div
-                class="task-item priority-high"
-                data-status="blocked"
-                data-week="1"
-              >
-                <div class="task-title">Accès aux Systèmes</div>
-                <div class="task-details">
-                  <strong>Bloquant :</strong> Nécessité d'obtenir les accès au
-                  SIG et la configuration du serveur SMTP pour poursuivre le
-                  développement
-                </div>
-                <div class="task-description">
-                  • Accès sécurisé au serveur SIG avec droits appropriés<br />
-                  • Configuration complète du serveur SMTP (authentification,
-                  ports, etc.)<br />
-                  • Documentation technique des APIs disponibles
-                </div>
-                <div class="task-date">🚨 URGENT - Semaine 1 (Juin 2025)</div>
-                <div class="responsible">DSI</div>
-                <div class="status-badge status-blocked">Bloquant</div>
-              </div>
-
-              <div
-                class="task-item priority-high"
-                data-status="pending"
-                data-week="1"
-              >
-                <div class="task-title">Retours et Remarques</div>
-                <div class="task-details">
-                  <strong>En attente :</strong> Transmission des remarques
-                  relevées lors de la réunion du 21/05/2025
-                </div>
-                <div class="task-description">
-                  • Compilation des remarques de chaque partie prenante<br />
-                  • Priorisation des modifications demandées<br />
-                  • Impact des changements sur le planning global
-                </div>
-                <div class="task-date">📅 Semaine 1 (Juin 2025)</div>
-                <div class="responsible">Toutes les parties</div>
-                <div class="status-badge status-pending">En attente</div>
               </div>
             </div>
           </div>
@@ -758,6 +1093,201 @@
         const weekFilter = document.getElementById("week-filter");
         const resetButton = document.getElementById("reset-filters");
         const taskItems = document.querySelectorAll(".task-item");
+        const ganttChart = document.getElementById("gantt-chart");
+        const tabs = document.querySelectorAll(".tab");
+        const tabContents = document.querySelectorAll(".tab-content");
+
+        // Set default tab to "Détails des Tâches"
+        document
+          .querySelector('.tab[data-tab="details-tab"]')
+          .classList.add("active");
+        document.getElementById("details-tab").classList.add("active");
+        document
+          .querySelector('.tab[data-tab="gantt-tab"]')
+          .classList.remove("active");
+        document.getElementById("gantt-tab").classList.remove("active");
+
+        // Tab switching functionality
+        tabs.forEach((tab) => {
+          tab.addEventListener("click", () => {
+            // Remove active class from all tabs and contents
+            tabs.forEach((t) => t.classList.remove("active"));
+            tabContents.forEach((c) => c.classList.remove("active"));
+
+            // Add active class to clicked tab and corresponding content
+            tab.classList.add("active");
+            const tabId = tab.getAttribute("data-tab");
+            document.getElementById(tabId).classList.add("active");
+          });
+        });
+
+        // Gantt chart data
+        const ganttData = [
+          {
+            label: "Ateliers et Réunions",
+            tasks: [
+              {
+                id: "atelier-formules",
+                label: "Atelier Formules de Calcul",
+                start: 1,
+                end: 2,
+                status: "pending",
+                priority: "high",
+              },
+              {
+                id: "validation-workflows",
+                label: "Validation des Workflows",
+                start: 2,
+                end: 3,
+                status: "pending",
+                priority: "high",
+              },
+              {
+                id: "gestion-eligibilite",
+                label: "Gestion de l'Éligibilité",
+                start: 4,
+                end: 5,
+                status: "planned",
+                priority: "medium",
+              },
+              {
+                id: "tests-validation",
+                label: "Tests et Validation",
+                start: 7,
+                end: 8,
+                status: "planned",
+                priority: "medium",
+              },
+            ],
+          },
+          {
+            label: "Actions Techniques",
+            tasks: [
+              {
+                id: "modeles-recepisse",
+                label: "Modèles de Récépissé",
+                start: 1,
+                end: 2,
+                status: "in-progress",
+                priority: "high",
+              },
+              {
+                id: "referentiel-subventions",
+                label: "Référentiel des Subventions",
+                start: 2,
+                end: 4,
+                status: "pending",
+                priority: "high",
+              },
+              {
+                id: "formulaire-depot",
+                label: "Formulaire de Dépôt",
+                start: 3,
+                end: 4,
+                status: "planned",
+                priority: "medium",
+              },
+              {
+                id: "notifications-sms",
+                label: "Notifications SMS",
+                start: 5,
+                end: 6,
+                status: "planned",
+                priority: "low",
+              },
+              {
+                id: "statuts-traitement",
+                label: "Statuts de Traitement",
+                start: 1,
+                end: 1,
+                status: "in-progress",
+                priority: "high",
+              },
+              {
+                id: "infrastructure-technique",
+                label: "Infrastructure Technique",
+                start: 1,
+                end: 1,
+                status: "pending",
+                priority: "high",
+              },
+            ],
+          },
+          {
+            label: "Points Critiques",
+            tasks: [
+              {
+                id: "acces-systemes",
+                label: "Accès aux Systèmes",
+                start: 1,
+                end: 1,
+                status: "blocked",
+                priority: "high",
+              },
+              {
+                id: "retours-remarques",
+                label: "Retours et Remarques",
+                start: 1,
+                end: 1,
+                status: "pending",
+                priority: "high",
+              },
+            ],
+          },
+        ];
+
+        // Generate Gantt chart
+        function generateGanttChart() {
+          ganttChart.innerHTML = "";
+
+          ganttData.forEach((group) => {
+            // Create group label row
+            const groupRow = document.createElement("div");
+            groupRow.className = "gantt-row";
+
+            const groupLabel = document.createElement("div");
+            groupLabel.className = "gantt-row-label";
+            groupLabel.textContent = group.label;
+            groupRow.appendChild(groupLabel);
+
+            const groupBars = document.createElement("div");
+            groupBars.className = "gantt-row-bars";
+            groupRow.appendChild(groupBars);
+
+            ganttChart.appendChild(groupRow);
+
+            // Create tasks for this group
+            group.tasks.forEach((task) => {
+              const taskRow = document.createElement("div");
+              taskRow.className = "gantt-row";
+
+              const taskLabel = document.createElement("div");
+              taskLabel.className = "gantt-row-label";
+              taskLabel.textContent = task.label;
+              taskRow.appendChild(taskLabel);
+
+              const taskBars = document.createElement("div");
+              taskBars.className = "gantt-row-bars";
+
+              // Calculate bar position and width
+              const barWidth = (task.end - task.start + 1) * 12.5; // 100% / 8 weeks
+              const barPosition = (task.start - 1) * 12.5;
+
+              const taskBar = document.createElement("div");
+              taskBar.className = `gantt-bar ${task.status.replace(" ", "-")} ${
+                task.priority
+              }`;
+              taskBar.style.left = `${barPosition}%`;
+              taskBar.style.width = `${barWidth}%`;
+              taskBar.textContent = task.label;
+
+              taskBars.appendChild(taskBar);
+              taskRow.appendChild(taskBars);
+
+              ganttChart.appendChild(taskRow);
+            });
+          });
+        }
 
         function applyFilters() {
           const selectedStatus = statusFilter.value;
@@ -789,7 +1319,8 @@
           applyFilters();
         });
 
-        // Apply filters on page load (in case there are URL parameters etc.)
+        // Initialize
+        generateGanttChart();
         applyFilters();
       });
     </script>
