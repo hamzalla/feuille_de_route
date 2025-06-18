@@ -114,58 +114,6 @@
         margin-bottom: 10px;
       }
 
-      .filters {
-        display: flex;
-        gap: 15px;
-        margin-bottom: 30px;
-        flex-wrap: wrap;
-        background: #f8f9fa;
-        padding: 20px;
-        border-radius: 10px;
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-      }
-
-      .filter-group {
-        display: flex;
-        flex-direction: column;
-        min-width: 200px;
-      }
-
-      .filter-group label {
-        margin-bottom: 8px;
-        font-weight: bold;
-        color: #2c3e50;
-      }
-
-      .filter-group select {
-        padding: 10px;
-        border-radius: 5px;
-        border: 1px solid #ddd;
-        background: white;
-        font-size: 14px;
-      }
-
-      .filter-group select:focus {
-        outline: none;
-        border-color: #27ae60;
-        box-shadow: 0 0 0 2px rgba(39, 174, 96, 0.2);
-      }
-
-      .reset-filters {
-        align-self: flex-end;
-        padding: 10px 15px;
-        background: #e74c3c;
-        color: white;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-        transition: background 0.3s;
-      }
-
-      .reset-filters:hover {
-        background: #c0392b;
-      }
-
       .section {
         margin-bottom: 40px;
         background: white;
@@ -201,26 +149,6 @@
         overflow: hidden;
       }
 
-      .task-item::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: -100%;
-        width: 100%;
-        height: 100%;
-        background: linear-gradient(
-          90deg,
-          transparent,
-          rgba(39, 174, 96, 0.1),
-          transparent
-        );
-        transition: left 0.5s ease;
-      }
-
-      .task-item:hover::before {
-        left: 100%;
-      }
-
       .task-item:hover {
         transform: translateX(5px);
         box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
@@ -231,11 +159,6 @@
         color: #2c3e50;
         margin-bottom: 10px;
         font-size: 1.1em;
-      }
-
-      .task-details {
-        color: #666;
-        line-height: 1.6;
       }
 
       .responsible {
@@ -278,23 +201,11 @@
         color: #721c24;
       }
 
-      .status-planned {
-        background: #e2e3e5;
-        color: #383d41;
-      }
-
       .task-date {
         font-size: 0.9em;
         color: #27ae60;
         font-weight: bold;
         margin-top: 8px;
-      }
-
-      .task-description {
-        font-size: 0.9em;
-        color: #666;
-        margin-top: 5px;
-        line-height: 1.4;
       }
 
       /* Progress Bar Styles */
@@ -459,11 +370,6 @@
         color: #721c24;
       }
 
-      .gantt-bar.planned {
-        background: #e2e3e5;
-        color: #383d41;
-      }
-
       .gantt-bar.high {
         border-left: 3px solid #e74c3c;
       }
@@ -494,18 +400,6 @@
         width: 20px;
         height: 20px;
         border-radius: 4px;
-        margin-right: 8px;
-      }
-
-      .gantt-legend-priority {
-        display: flex;
-        align-items: center;
-        margin-left: 15px;
-      }
-
-      .gantt-legend-priority-line {
-        width: 20px;
-        height: 3px;
         margin-right: 8px;
       }
 
@@ -546,47 +440,9 @@
         display: block;
       }
 
-      .hidden {
-        display: none;
-      }
-
       @media (max-width: 768px) {
-        .container {
-          margin: 10px;
-          border-radius: 15px;
-        }
-
-        .header {
-          padding: 30px 20px;
-        }
-
-        .header h1 {
-          font-size: 2em;
-        }
-
         .content {
           padding: 20px;
-        }
-
-        .status-overview {
-          grid-template-columns: 1fr;
-        }
-
-        .section-content {
-          padding: 20px;
-        }
-
-        .filters {
-          flex-direction: column;
-          gap: 10px;
-        }
-
-        .filter-group {
-          width: 100%;
-        }
-
-        .reset-filters {
-          align-self: flex-start;
         }
 
         .gantt-header {
@@ -595,16 +451,6 @@
 
         .gantt-row-label {
           width: 150px;
-        }
-
-        .tabs {
-          flex-wrap: wrap;
-        }
-
-        .tab {
-          flex: 1;
-          text-align: center;
-          margin-bottom: 5px;
         }
       }
     </style>
@@ -615,57 +461,11 @@
         <h1>🌱 Feuille de Route - Projet SGAIA</h1>
         <p>
           Plan d'action pour finaliser le système de gestion des subventions
-          agricoles | Durée estimée: 2 mois
+          agricoles | Durée estimée: 10 semaines
         </p>
       </div>
 
       <div class="content">
-        <div class="status-overview">
-          <div class="status-card">
-            <h3>4</h3>
-            <p>Ateliers à Organiser</p>
-          </div>
-          <div class="status-card">
-            <h3>7</h3>
-            <p>Actions Techniques</p>
-          </div>
-          <div class="status-card">
-            <h3>3</h3>
-            <p>Parties Prenantes</p>
-          </div>
-        </div>
-
-        <div class="filters">
-          <div class="filter-group">
-            <label for="status-filter">Filtrer par statut:</label>
-            <select id="status-filter">
-              <option value="all">Tous les statuts</option>
-              <option value="pending">En attente</option>
-              <option value="in-progress">En cours</option>
-              <option value="completed">Terminé</option>
-              <option value="blocked">Bloquant</option>
-              <option value="planned">Planifié</option>
-            </select>
-          </div>
-
-          <div class="filter-group">
-            <label for="week-filter">Filtrer par semaine:</label>
-            <select id="week-filter">
-              <option value="all">Toutes les semaines</option>
-              <option value="1-2">Semaines 1-2 (Juin 2025)</option>
-              <option value="2-3">Semaines 2-3 (Juin 2025)</option>
-              <option value="3-4">Semaines 3-4 (Juin 2025)</option>
-              <option value="4-5">Semaines 4-5 (Juin 2025)</option>
-              <option value="5-6">Semaines 5-6 (Juillet 2025)</option>
-              <option value="7-8">Semaines 7-8 (Juillet 2025)</option>
-            </select>
-          </div>
-
-          <button class="reset-filters" id="reset-filters">
-            Réinitialiser les filtres
-          </button>
-        </div>
-
         <!-- Tabs Navigation -->
         <div class="tabs">
           <div class="tab active" data-tab="details-tab">
@@ -678,93 +478,47 @@
         <div id="details-tab" class="tab-content active">
           <!-- SECTION EN COURS -->
           <div class="section">
-            <div class="section-header">🚀 En Cours</div>
+            <div class="section-header">🚀 EN COURS</div>
             <div class="section-content">
               <div class="task-grid">
-                <div
-                  class="task-item priority-high"
-                  data-status="in-progress"
-                  data-week="2-3"
-                >
+                <div class="task-item priority-high" data-status="in-progress">
                   <div class="task-title">Validation des Workflows</div>
-                  <div class="task-details">
-                    Valider les workflows de chaque subvention et définir les
-                    délais de traitement.
-                  </div>
-                  <div class="task-date">📅 Semaine 2-3 (Juin 2025)</div>
-                  <div class="responsible">Netopia + DSI</div>
+                  <div class="task-date">📅 Semaines 4-5</div>
                   <div class="status-badge status-in-progress">En cours</div>
                   <div class="progress-bar-container">
                     <div class="progress-bar" style="width: 80%">80%</div>
                   </div>
                 </div>
-
-                <div
-                  class="task-item priority-high"
-                  data-status="in-progress"
-                  data-week="1"
-                >
+                <div class="task-item priority-high" data-status="in-progress">
                   <div class="task-title">Statuts de Traitement</div>
-                  <div class="task-details">
-                    Fournir le fichier Excel contenant tous les statuts du
-                    traitement de dossier.
-                  </div>
-                  <div class="task-date">📅 Semaine 1 (Juin 2025)</div>
-                  <div class="responsible">Direction Financière</div>
+                  <div class="task-date">📅 Semaine 3</div>
                   <div class="status-badge status-in-progress">En cours</div>
                   <div class="progress-bar-container">
                     <div class="progress-bar" style="width: 80%">80%</div>
                   </div>
                 </div>
-
-                <div
-                  class="task-item priority-medium"
-                  data-status="in-progress"
-                  data-week="5-6"
-                >
+                <div class="task-item priority-low" data-status="in-progress">
                   <div class="task-title">Notifications SMS</div>
-                  <div class="task-details">
-                    Présenter un devis détaillé pour le système de notifications
-                    SMS.
-                  </div>
-                  <div class="task-date">📅 Semaine 5-6 (Juillet 2025)</div>
-                  <div class="responsible">Netopia</div>
+                  <div class="task-date">📅 Semaines 7-8</div>
                   <div class="status-badge status-in-progress">En cours</div>
                   <div class="progress-bar-container">
-                    <div class="progress-bar" style="width: 70%">70%</div>
+                    <div class="progress-bar" style="width: 60%">60%</div>
                   </div>
                 </div>
-
                 <div
                   class="task-item priority-medium"
                   data-status="in-progress"
-                  data-week="4-5"
                 >
                   <div class="task-title">Gestion de l'Éligibilité</div>
-                  <div class="task-details">
-                    Définir les critères d'éligibilité des agriculteurs et la
-                    gestion des compteurs de dépôt.
-                  </div>
-                  <div class="task-date">📅 Semaine 4-5 (Juin 2025)</div>
-                  <div class="responsible">Netopia + DF</div>
+                  <div class="task-date">📅 Semaines 5-6</div>
                   <div class="status-badge status-in-progress">En cours</div>
                   <div class="progress-bar-container">
                     <div class="progress-bar" style="width: 50%">50%</div>
                   </div>
                 </div>
-
-                <div
-                  class="task-item priority-high"
-                  data-status="in-progress"
-                  data-week="1-2"
-                >
+                <div class="task-item priority-high" data-status="in-progress">
                   <div class="task-title">Modèles de Récépissé</div>
-                  <div class="task-details">
-                    Mise en place et intégration des modèles de récépissé
-                    fournis par la DF.
-                  </div>
-                  <div class="task-date">📅 Semaine 1-2 (Juin 2025)</div>
-                  <div class="responsible">Netopia</div>
+                  <div class="task-date">📅 Semaines 3-4</div>
                   <div class="status-badge status-in-progress">En cours</div>
                   <div class="progress-bar-container">
                     <div class="progress-bar" style="width: 50%">50%</div>
@@ -776,68 +530,36 @@
 
           <!-- SECTION EN ATTENTE CLIENT -->
           <div class="section">
-            <div class="section-header">⏳ En Attente Client</div>
+            <div class="section-header">⏳ EN ATTENTE CLIENT</div>
             <div class="section-content">
               <div class="task-grid">
-                <div
-                  class="task-item priority-high"
-                  data-status="blocked"
-                  data-week="1"
-                >
+                <div class="task-item priority-high" data-status="blocked">
                   <div class="task-title">Accès aux Systèmes</div>
-                  <div class="task-details">
-                    <strong>Bloquant :</strong> Nécessité d'obtenir les accès au
-                    SIG et la configuration du serveur SMTP pour poursuivre le
-                    développement.
+                  <div class="task-date">📅 Semaine 2</div>
+                  <div class="status-badge status-blocked">
+                    Bloquant (attente client)
                   </div>
-                  <div class="task-date">🚨 URGENT - Semaine 1 (Juin 2025)</div>
-                  <div class="responsible">DSI</div>
-                  <div class="status-badge status-blocked">Bloquant</div>
                 </div>
-
-                <div
-                  class="task-item priority-high"
-                  data-status="pending"
-                  data-week="1"
-                >
+                <div class="task-item priority-high" data-status="pending">
                   <div class="task-title">Infrastructure Technique</div>
-                  <div class="task-details">
-                    <strong>En attente client :</strong> Fourniture du SIG et
-                    configuration du serveur SMTP.
+                  <div class="task-date">📅 Semaine 2</div>
+                  <div class="status-badge status-pending">
+                    En attente client
                   </div>
-                  <div class="task-date">📅 Semaine 1 (Juin 2025)</div>
-                  <div class="responsible">DSI</div>
-                  <div class="status-badge status-pending">En attente Client</div>
                 </div>
-
-                <div
-                  class="task-item priority-high"
-                  data-status="pending"
-                  data-week="1"
-                >
+                <div class="task-item priority-high" data-status="pending">
                   <div class="task-title">Retours et Remarques</div>
-                  <div class="task-details">
-                    <strong>En attente client :</strong> Transmission des
-                    remarques relevées lors de la réunion du 21/05/2025.
+                  <div class="task-date">📅 Semaine 2</div>
+                  <div class="status-badge status-pending">
+                    En attente client
                   </div>
-                  <div class="task-date">📅 Semaine 1 (Juin 2025)</div>
-                  <div class="responsible">Toutes les parties</div>
-                  <div class="status-badge status-pending">En attente Client</div>
                 </div>
-
-                <div
-                  class="task-item priority-high"
-                  data-status="pending"
-                  data-week="7-8"
-                >
+                <div class="task-item priority-medium" data-status="pending">
                   <div class="task-title">Tests et Validation</div>
-                  <div class="task-details">
-                    <strong>En attente client :</strong> Organiser les sessions
-                    de test et valider toutes les modifications implémentées.
+                  <div class="task-date">📅 Semaines 9-10</div>
+                  <div class="status-badge status-pending">
+                    En attente client
                   </div>
-                  <div class="task-date">📅 Semaine 7-8 (Juillet 2025)</div>
-                  <div class="responsible">Netopia + DF</div>
-                  <div class="status-badge status-pending">En attente Client</div>
                 </div>
               </div>
             </div>
@@ -845,51 +567,22 @@
 
           <!-- SECTION TERMINE -->
           <div class="section">
-            <div class="section-header">✅ Terminé</div>
+            <div class="section-header">✅ TERMINÉ</div>
             <div class="section-content">
               <div class="task-grid">
-                <div
-                  class="task-item priority-low"
-                  data-status="completed"
-                  data-week="1-2"
-                >
+                <div class="task-item priority-high" data-status="completed">
                   <div class="task-title">Atelier Formules de Calcul</div>
-                  <div class="task-details">
-                    Définir et valider les formules de calcul des subventions
-                    avec les équipes techniques.
-                  </div>
-                  <div class="task-date">📅 Semaine 1-2 (Juin 2025)</div>
-                  <div class="responsible">Netopia + DSI</div>
+                  <div class="task-date">📅 Semaines 1-2</div>
                   <div class="status-badge status-completed">Terminé</div>
                 </div>
-
-                <div
-                  class="task-item priority-low"
-                  data-status="completed"
-                  data-week="2-4"
-                >
+                <div class="task-item priority-high" data-status="completed">
                   <div class="task-title">Référentiel des Subventions</div>
-                  <div class="task-details">
-                    Implémentation complète du référentiel et du paramétrage des
-                    subventions.
-                  </div>
-                  <div class="task-date">📅 Semaine 2-4 (Juin 2025)</div>
-                  <div class="responsible">Netopia</div>
+                  <div class="task-date">📅 Semaines 2-4</div>
                   <div class="status-badge status-completed">Terminé</div>
                 </div>
-
-                <div
-                  class="task-item priority-low"
-                  data-status="completed"
-                  data-week="3-4"
-                >
+                <div class="task-item priority-medium" data-status="completed">
                   <div class="task-title">Formulaire de Dépôt</div>
-                  <div class="task-details">
-                    Intégrer toutes les modifications demandées sur le
-                    formulaire de dépôt de dossier.
-                  </div>
-                  <div class="task-date">📅 Semaine 3-4 (Juin 2025)</div>
-                  <div class="responsible">Netopia</div>
+                  <div class="task-date">📅 Semaines 3-4</div>
                   <div class="status-badge status-completed">Terminé</div>
                 </div>
               </div>
@@ -912,12 +605,13 @@
                   <div class="gantt-header-item">Sem 6</div>
                   <div class="gantt-header-item">Sem 7</div>
                   <div class="gantt-header-item">Sem 8</div>
+                  <div class="gantt-header-item">Sem 9</div>
+                  <div class="gantt-header-item">Sem 10</div>
                 </div>
                 <div class="gantt-body" id="gantt-chart">
                   <!-- Gantt rows will be inserted here by JavaScript -->
                 </div>
               </div>
-
               <div class="gantt-legend">
                 <div class="gantt-legend-item">
                   <div
@@ -947,76 +641,46 @@
                   ></div>
                   <span>Bloquant</span>
                 </div>
-                <div class="gantt-legend-item">
-                  <div
-                    class="gantt-legend-color"
-                    style="background: #e2e3e5"
-                  ></div>
-                  <span>Planifié</span>
-                </div>
-
-                <div class="gantt-legend-priority">
-                  <div class="gantt-legend-priority-item">
-                    <div
-                      class="gantt-legend-priority-line"
-                      style="background: #e74c3c"
-                    ></div>
-                    <span>Haute</span>
-                  </div>
-                  <div class="gantt-legend-priority-item">
-                    <div
-                      class="gantt-legend-priority-line"
-                      style="background: #f39c12"
-                    ></div>
-                    <span>Moyenne</span>
-                  </div>
-                  <div class="gantt-legend-priority-item">
-                    <div
-                      class="gantt-legend-priority-line"
-                      style="background: #27ae60"
-                    ></div>
-                    <span>Basse</span>
-                  </div>
-                </div>
               </div>
             </div>
           </div>
         </div>
 
         <div class="timeline">
-          <h3>🎯 Plan de Mise en Œuvre - 8 Semaines (Juin - Juillet 2025)</h3>
-
+          <h3>🎯 Plan de Mise en Œuvre - 10 Semaines</h3>
           <div class="timeline-item">
             <div class="timeline-number">1</div>
             <div>
-              <strong>Semaines 1-2 (Juin 2025) :</strong> Déblocage urgent -
-              Accès techniques (SIG, SMTP), atelier formules de calcul, début
-              modèles récépissé
+              <strong>Semaines 1-2:</strong> Finalisation des ateliers et
+              résolution des points de blocage client.
             </div>
           </div>
-
           <div class="timeline-item">
             <div class="timeline-number">2</div>
             <div>
-              <strong>Semaines 3-4 (Juin 2025) :</strong> Développement intensif
-              - Référentiel subventions, workflows, modifications formulaire
+              <strong>Semaines 3-4:</strong> Développement principal des
+              statuts, modèles et formulaires.
             </div>
           </div>
-
           <div class="timeline-item">
             <div class="timeline-number">3</div>
             <div>
-              <strong>Semaines 5-6 (Juillet 2025) :</strong> Configuration et
-              intégration - Gestion éligibilité, devis SMS, finalisation
-              technique
+              <strong>Semaines 5-6:</strong> Intégration des workflows et de la
+              gestion de l'éligibilité.
             </div>
           </div>
-
           <div class="timeline-item">
             <div class="timeline-number">4</div>
             <div>
-              <strong>Semaines 7-8 (Juillet 2025) :</strong> Tests complets,
-              validation utilisateur, livraison finale du système SGAIA
+              <strong>Semaines 7-8:</strong> Développement et intégration des
+              fonctionnalités annexes (Notifications SMS).
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-number">5</div>
+            <div>
+              <strong>Semaines 9-10:</strong> Phase de tests et validation
+              complète avant la livraison finale.
             </div>
           </div>
         </div>
@@ -1025,148 +689,120 @@
 
     <script>
       document.addEventListener("DOMContentLoaded", function () {
-        const statusFilter = document.getElementById("status-filter");
-        const weekFilter = document.getElementById("week-filter");
-        const resetButton = document.getElementById("reset-filters");
-        const taskItems = document.querySelectorAll(".task-item");
         const ganttChart = document.getElementById("gantt-chart");
         const tabs = document.querySelectorAll(".tab");
         const tabContents = document.querySelectorAll(".tab-content");
 
-        // Set default tab to "Détails des Tâches"
-        document
-          .querySelector('.tab[data-tab="details-tab"]')
-          .classList.add("active");
-        document.getElementById("details-tab").classList.add("active");
-        document
-          .querySelector('.tab[data-tab="gantt-tab"]')
-          .classList.remove("active");
-        document.getElementById("gantt-tab").classList.remove("active");
-
         // Tab switching functionality
         tabs.forEach((tab) => {
           tab.addEventListener("click", () => {
-            // Remove active class from all tabs and contents
             tabs.forEach((t) => t.classList.remove("active"));
             tabContents.forEach((c) => c.classList.remove("active"));
-
-            // Add active class to clicked tab and corresponding content
             tab.classList.add("active");
-            const tabId = tab.getAttribute("data-tab");
-            document.getElementById(tabId).classList.add("active");
+            document
+              .getElementById(tab.getAttribute("data-tab"))
+              .classList.add("active");
           });
         });
 
-        // Gantt chart data - UPDATED
+        // UPDATED Gantt chart data for 10 weeks
         const ganttData = [
           {
-            label: "🚀 En Cours",
+            label: "🚀 EN COURS",
             tasks: [
               {
-                id: "validation-workflows",
                 label: "Validation des Workflows",
-                start: 2,
+                start: 4,
+                end: 5,
+                status: "in-progress",
+                priority: "high",
+              },
+              {
+                label: "Statuts de Traitement",
+                start: 3,
                 end: 3,
                 status: "in-progress",
                 priority: "high",
               },
               {
-                id: "statuts-traitement",
-                label: "Statuts de Traitement",
-                start: 1,
-                end: 1,
+                label: "Notifications SMS",
+                start: 7,
+                end: 8,
                 status: "in-progress",
-                priority: "high",
+                priority: "low",
               },
               {
-                id: "notifications-sms",
-                label: "Notifications SMS",
+                label: "Gestion de l'Éligibilité",
                 start: 5,
                 end: 6,
                 status: "in-progress",
                 priority: "medium",
               },
               {
-                id: "gestion-eligibilite",
-                label: "Gestion de l'Éligibilité",
-                start: 4,
-                end: 5,
-                status: "in-progress",
-                priority: "medium",
-              },
-              {
-                id: "modeles-recepisse",
                 label: "Modèles de Récépissé",
-                start: 1,
-                end: 2,
+                start: 3,
+                end: 4,
                 status: "in-progress",
                 priority: "high",
               },
             ],
           },
           {
-            label: "⏳ En Attente Client",
+            label: "⏳ EN ATTENTE CLIENT",
             tasks: [
               {
-                id: "acces-systemes",
                 label: "Accès aux Systèmes",
-                start: 1,
-                end: 1,
+                start: 2,
+                end: 2,
                 status: "blocked",
                 priority: "high",
               },
               {
-                id: "infrastructure-technique",
                 label: "Infrastructure Technique",
-                start: 1,
-                end: 1,
+                start: 2,
+                end: 2,
                 status: "pending",
                 priority: "high",
               },
               {
-                id: "retours-remarques",
                 label: "Retours et Remarques",
-                start: 1,
-                end: 1,
+                start: 2,
+                end: 2,
                 status: "pending",
                 priority: "high",
               },
               {
-                id: "tests-validation",
                 label: "Tests et Validation",
-                start: 7,
-                end: 8,
+                start: 9,
+                end: 10,
                 status: "pending",
-                priority: "high",
+                priority: "medium",
               },
             ],
           },
           {
-            label: "✅ Terminé",
+            label: "✅ TERMINÉ",
             tasks: [
               {
-                id: "atelier-formules",
                 label: "Atelier Formules de Calcul",
                 start: 1,
                 end: 2,
                 status: "completed",
-                priority: "low",
+                priority: "high",
               },
               {
-                id: "referentiel-subventions",
                 label: "Référentiel des Subventions",
                 start: 2,
                 end: 4,
                 status: "completed",
-                priority: "low",
+                priority: "high",
               },
               {
-                id: "formulaire-depot",
                 label: "Formulaire de Dépôt",
                 start: 3,
                 end: 4,
                 status: "completed",
-                priority: "low",
+                priority: "medium",
               },
             ],
           },
@@ -1177,26 +813,21 @@
           ganttChart.innerHTML = "";
 
           ganttData.forEach((group) => {
-            // Create group label row
             const groupRow = document.createElement("div");
             groupRow.className = "gantt-row";
-
             const groupLabel = document.createElement("div");
             groupLabel.className = "gantt-row-label";
+            groupLabel.style.fontWeight = "bold";
             groupLabel.textContent = group.label;
             groupRow.appendChild(groupLabel);
-
             const groupBars = document.createElement("div");
             groupBars.className = "gantt-row-bars";
             groupRow.appendChild(groupBars);
-
             ganttChart.appendChild(groupRow);
 
-            // Create tasks for this group
             group.tasks.forEach((task) => {
               const taskRow = document.createElement("div");
               taskRow.className = "gantt-row";
-
               const taskLabel = document.createElement("div");
               taskLabel.className = "gantt-row-label";
               taskLabel.textContent = task.label;
@@ -1205,9 +836,9 @@
               const taskBars = document.createElement("div");
               taskBars.className = "gantt-row-bars";
 
-              // Calculate bar position and width
-              const barWidth = (task.end - task.start + 1) * 12.5; // 100% / 8 weeks
-              const barPosition = (task.start - 1) * 12.5;
+              // UPDATED LOGIC FOR 10 WEEKS
+              const barWidth = (task.end - task.start + 1) * 10; // 100% / 10 weeks = 10%
+              const barPosition = (task.start - 1) * 10;
 
               const taskBar = document.createElement("div");
               taskBar.className = `gantt-bar ${task.status.replace(" ", "-")} ${
@@ -1219,45 +850,13 @@
 
               taskBars.appendChild(taskBar);
               taskRow.appendChild(taskBars);
-
               ganttChart.appendChild(taskRow);
             });
           });
         }
 
-        function applyFilters() {
-          const selectedStatus = statusFilter.value;
-          const selectedWeek = weekFilter.value;
-
-          taskItems.forEach((task) => {
-            const taskStatus = task.getAttribute("data-status");
-            const taskWeek = task.getAttribute("data-week");
-
-            const statusMatch =
-              selectedStatus === "all" || taskStatus === selectedStatus;
-            const weekMatch =
-              selectedWeek === "all" || taskWeek === selectedWeek;
-
-            if (statusMatch && weekMatch) {
-              task.classList.remove("hidden");
-            } else {
-              task.classList.add("hidden");
-            }
-          });
-        }
-
-        statusFilter.addEventListener("change", applyFilters);
-        weekFilter.addEventListener("change", applyFilters);
-
-        resetButton.addEventListener("click", function () {
-          statusFilter.value = "all";
-          weekFilter.value = "all";
-          applyFilters();
-        });
-
         // Initialize
         generateGanttChart();
-        applyFilters();
       });
     </script>
   </body>
