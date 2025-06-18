@@ -297,6 +297,25 @@
         line-height: 1.4;
       }
 
+      /* Progress Bar Styles */
+      .progress-bar-container {
+        background-color: #e9ecef;
+        border-radius: 10px;
+        height: 12px;
+        margin-top: 10px;
+        overflow: hidden;
+      }
+      .progress-bar {
+        background-color: #27ae60;
+        height: 100%;
+        border-radius: 10px;
+        text-align: center;
+        color: white;
+        font-size: 9px;
+        line-height: 12px;
+        transition: width 0.5s ease-in-out;
+      }
+
       .priority-high {
         border-left-color: #e74c3c;
       }
@@ -656,278 +675,120 @@
         </div>
 
         <!-- Details Tab Content -->
-        <div id="details-tab" class="tab-content">
+        <div id="details-tab" class="tab-content active">
+          <!-- SECTION EN COURS -->
           <div class="section">
-            <div class="section-header">
-              📅 Ateliers et Réunions Prioritaires
-            </div>
+            <div class="section-header">🚀 En Cours</div>
             <div class="section-content">
               <div class="task-grid">
                 <div
                   class="task-item priority-high"
-                  data-status="pending"
-                  data-week="1-2"
-                  data-gantt-label="Atelier Formules de Calcul"
-                  data-gantt-start="1"
-                  data-gantt-end="2"
-                >
-                  <div class="task-title">Atelier Formules de Calcul</div>
-                  <div class="task-details">
-                    Définir et valider les formules de calcul des subventions
-                    avec les équipes techniques
-                  </div>
-                  <div class="task-description">
-                    • Établir les critères de calcul pour chaque type de
-                    subvention<br />
-                    • Valider les barèmes avec la Direction Financière<br />
-                    • Documenter les règles de calcul automatisé
-                  </div>
-                  <div class="task-date">📅 Semaine 1-2 (Juin 2025)</div>
-                  <div class="responsible">Netopia + DSI</div>
-                  <div class="status-badge status-pending">En attente</div>
-                </div>
-
-                <div
-                  class="task-item priority-high"
-                  data-status="pending"
+                  data-status="in-progress"
                   data-week="2-3"
-                  data-gantt-label="Validation des Workflows"
-                  data-gantt-start="2"
-                  data-gantt-end="3"
                 >
                   <div class="task-title">Validation des Workflows</div>
                   <div class="task-details">
                     Valider les workflows de chaque subvention et définir les
-                    délais de traitement
-                  </div>
-                  <div class="task-description">
-                    • Cartographier le processus complet de traitement<br />
-                    • Définir les étapes de validation et d'approbation<br />
-                    • Fixer les SLA pour chaque étape du workflow
+                    délais de traitement.
                   </div>
                   <div class="task-date">📅 Semaine 2-3 (Juin 2025)</div>
                   <div class="responsible">Netopia + DSI</div>
-                  <div class="status-badge status-pending">En attente</div>
-                </div>
-
-                <div
-                  class="task-item priority-medium"
-                  data-status="planned"
-                  data-week="4-5"
-                  data-gantt-label="Gestion de l'Éligibilité"
-                  data-gantt-start="4"
-                  data-gantt-end="5"
-                >
-                  <div class="task-title">Gestion de l'Éligibilité</div>
-                  <div class="task-details">
-                    Définir les critères d'éligibilité des agriculteurs et la
-                    gestion des compteurs de dépôt
-                  </div>
-                  <div class="task-description">
-                    • Paramétrer les critères d'éligibilité par type
-                    d'exploitation<br />
-                    • Configurer les limitations de dépôt par période<br />
-                    • Intégrer les contrôles automatiques d'éligibilité
-                  </div>
-                  <div class="task-date">📅 Semaine 4-5 (Juin 2025)</div>
-                  <div class="responsible">Netopia + DF</div>
-                  <div class="status-badge status-planned">Planifié</div>
-                </div>
-
-                <div
-                  class="task-item priority-medium"
-                  data-status="planned"
-                  data-week="7-8"
-                  data-gantt-label="Tests et Validation"
-                  data-gantt-start="7"
-                  data-gantt-end="8"
-                >
-                  <div class="task-title">Tests et Validation</div>
-                  <div class="task-details">
-                    Organiser les sessions de test et valider toutes les
-                    modifications implémentées
-                  </div>
-                  <div class="task-description">
-                    • Tests unitaires des nouvelles fonctionnalités<br />
-                    • Tests d'intégration avec les systèmes existants<br />
-                    • Validation utilisateur avec la DF
-                  </div>
-                  <div class="task-date">📅 Semaine 7-8 (Juillet 2025)</div>
-                  <div class="responsible">Netopia + DF</div>
-                  <div class="status-badge status-planned">Planifié</div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="section">
-            <div class="section-header">⚙️ Actions Techniques et Livrables</div>
-            <div class="section-content">
-              <div class="task-grid">
-                <div
-                  class="task-item priority-high"
-                  data-status="in-progress"
-                  data-week="1-2"
-                  data-gantt-label="Modèles de Récépissé"
-                  data-gantt-start="1"
-                  data-gantt-end="2"
-                >
-                  <div class="task-title">Modèles de Récépissé</div>
-                  <div class="task-details">
-                    Mise en place et intégration des modèles de récépissé
-                    fournis par la DF
-                  </div>
-                  <div class="task-description">
-                    • Intégrer les templates de récépissé dans le système<br />
-                    • Configurer la génération automatique<br />
-                    • Tester l'impression et l'envoi électronique
-                  </div>
-                  <div class="task-date">📅 Semaine 1-2 (Juin 2025)</div>
-                  <div class="responsible">Netopia</div>
                   <div class="status-badge status-in-progress">En cours</div>
-                </div>
-
-                <div
-                  class="task-item priority-high"
-                  data-status="pending"
-                  data-week="2-4"
-                  data-gantt-label="Référentiel des Subventions"
-                  data-gantt-start="2"
-                  data-gantt-end="4"
-                >
-                  <div class="task-title">Référentiel des Subventions</div>
-                  <div class="task-details">
-                    Implémentation complète du référentiel et du paramétrage des
-                    subventions
+                  <div class="progress-bar-container">
+                    <div class="progress-bar" style="width: 80%">80%</div>
                   </div>
-                  <div class="task-description">
-                    • Créer la base de données des types de subventions<br />
-                    • Paramétrer les montants et critères par région<br />
-                    • Implémenter l'interface de gestion du référentiel
-                  </div>
-                  <div class="task-date">📅 Semaine 2-4 (Juin 2025)</div>
-                  <div class="responsible">Netopia</div>
-                  <div class="status-badge status-pending">En attente</div>
-                </div>
-
-                <div
-                  class="task-item priority-medium"
-                  data-status="planned"
-                  data-week="3-4"
-                  data-gantt-label="Formulaire de Dépôt"
-                  data-gantt-start="3"
-                  data-gantt-end="4"
-                >
-                  <div class="task-title">Formulaire de Dépôt</div>
-                  <div class="task-details">
-                    Intégrer toutes les modifications demandées sur le
-                    formulaire de dépôt de dossier
-                  </div>
-                  <div class="task-description">
-                    • Ajouter les nouveaux champs demandés<br />
-                    • Améliorer la validation des données<br />
-                    • Optimiser l'interface utilisateur
-                  </div>
-                  <div class="task-date">📅 Semaine 3-4 (Juin 2025)</div>
-                  <div class="responsible">Netopia</div>
-                  <div class="status-badge status-planned">Planifié</div>
-                </div>
-
-                <div
-                  class="task-item priority-low"
-                  data-status="planned"
-                  data-week="5-6"
-                  data-gantt-label="Notifications SMS"
-                  data-gantt-start="5"
-                  data-gantt-end="6"
-                >
-                  <div class="task-title">Notifications SMS</div>
-                  <div class="task-details">
-                    Présenter un devis détaillé pour le système de notifications
-                    SMS
-                  </div>
-                  <div class="task-description">
-                    • Analyser les coûts par SMS et volume mensuel<br />
-                    • Proposer différentes options de fournisseurs<br />
-                    • Estimer l'intégration technique
-                  </div>
-                  <div class="task-date">📅 Semaine 5-6 (Juillet 2025)</div>
-                  <div class="responsible">Netopia</div>
-                  <div class="status-badge status-planned">Planifié</div>
                 </div>
 
                 <div
                   class="task-item priority-high"
                   data-status="in-progress"
                   data-week="1"
-                  data-gantt-label="Statuts de Traitement"
-                  data-gantt-start="1"
-                  data-gantt-end="1"
                 >
                   <div class="task-title">Statuts de Traitement</div>
                   <div class="task-details">
                     Fournir le fichier Excel contenant tous les statuts du
-                    traitement de dossier
-                  </div>
-                  <div class="task-description">
-                    • Compiler tous les statuts possibles<br />
-                    • Définir les transitions entre statuts<br />
-                    • Documenter les actions associées à chaque statut
+                    traitement de dossier.
                   </div>
                   <div class="task-date">📅 Semaine 1 (Juin 2025)</div>
                   <div class="responsible">Direction Financière</div>
                   <div class="status-badge status-in-progress">En cours</div>
+                  <div class="progress-bar-container">
+                    <div class="progress-bar" style="width: 80%">80%</div>
+                  </div>
+                </div>
+
+                <div
+                  class="task-item priority-medium"
+                  data-status="in-progress"
+                  data-week="5-6"
+                >
+                  <div class="task-title">Notifications SMS</div>
+                  <div class="task-details">
+                    Présenter un devis détaillé pour le système de notifications
+                    SMS.
+                  </div>
+                  <div class="task-date">📅 Semaine 5-6 (Juillet 2025)</div>
+                  <div class="responsible">Netopia</div>
+                  <div class="status-badge status-in-progress">En cours</div>
+                  <div class="progress-bar-container">
+                    <div class="progress-bar" style="width: 70%">70%</div>
+                  </div>
+                </div>
+
+                <div
+                  class="task-item priority-medium"
+                  data-status="in-progress"
+                  data-week="4-5"
+                >
+                  <div class="task-title">Gestion de l'Éligibilité</div>
+                  <div class="task-details">
+                    Définir les critères d'éligibilité des agriculteurs et la
+                    gestion des compteurs de dépôt.
+                  </div>
+                  <div class="task-date">📅 Semaine 4-5 (Juin 2025)</div>
+                  <div class="responsible">Netopia + DF</div>
+                  <div class="status-badge status-in-progress">En cours</div>
+                  <div class="progress-bar-container">
+                    <div class="progress-bar" style="width: 50%">50%</div>
+                  </div>
                 </div>
 
                 <div
                   class="task-item priority-high"
-                  data-status="pending"
-                  data-week="1"
-                  data-gantt-label="Infrastructure Technique"
-                  data-gantt-start="1"
-                  data-gantt-end="1"
+                  data-status="in-progress"
+                  data-week="1-2"
                 >
-                  <div class="task-title">Infrastructure Technique</div>
+                  <div class="task-title">Modèles de Récépissé</div>
                   <div class="task-details">
-                    Fourniture du SIG (Système d'Information Géographique) et
-                    configuration du serveur SMTP
+                    Mise en place et intégration des modèles de récépissé
+                    fournis par la DF.
                   </div>
-                  <div class="task-description">
-                    • Configurer l'accès au serveur SIG<br />
-                    • Paramétrer le serveur SMTP pour les emails<br />
-                    • Tester la connectivité et les performances
+                  <div class="task-date">📅 Semaine 1-2 (Juin 2025)</div>
+                  <div class="responsible">Netopia</div>
+                  <div class="status-badge status-in-progress">En cours</div>
+                  <div class="progress-bar-container">
+                    <div class="progress-bar" style="width: 50%">50%</div>
                   </div>
-                  <div class="task-date">📅 Semaine 1 (Juin 2025)</div>
-                  <div class="responsible">DSI</div>
-                  <div class="status-badge status-pending">En attente</div>
                 </div>
               </div>
             </div>
           </div>
 
+          <!-- SECTION EN ATTENTE CLIENT -->
           <div class="section">
-            <div class="section-header">⚠️ Points Critiques et Dépendances</div>
+            <div class="section-header">⏳ En Attente Client</div>
             <div class="section-content">
               <div class="task-grid">
                 <div
                   class="task-item priority-high"
                   data-status="blocked"
                   data-week="1"
-                  data-gantt-label="Accès aux Systèmes"
-                  data-gantt-start="1"
-                  data-gantt-end="1"
                 >
                   <div class="task-title">Accès aux Systèmes</div>
                   <div class="task-details">
                     <strong>Bloquant :</strong> Nécessité d'obtenir les accès au
                     SIG et la configuration du serveur SMTP pour poursuivre le
-                    développement
-                  </div>
-                  <div class="task-description">
-                    • Accès sécurisé au serveur SIG avec droits appropriés<br />
-                    • Configuration complète du serveur SMTP (authentification,
-                    ports, etc.)<br />
-                    • Documentation technique des APIs disponibles
+                    développement.
                   </div>
                   <div class="task-date">🚨 URGENT - Semaine 1 (Juin 2025)</div>
                   <div class="responsible">DSI</div>
@@ -938,23 +799,98 @@
                   class="task-item priority-high"
                   data-status="pending"
                   data-week="1"
-                  data-gantt-label="Retours et Remarques"
-                  data-gantt-start="1"
-                  data-gantt-end="1"
+                >
+                  <div class="task-title">Infrastructure Technique</div>
+                  <div class="task-details">
+                    <strong>En attente client :</strong> Fourniture du SIG et
+                    configuration du serveur SMTP.
+                  </div>
+                  <div class="task-date">📅 Semaine 1 (Juin 2025)</div>
+                  <div class="responsible">DSI</div>
+                  <div class="status-badge status-pending">En attente Client</div>
+                </div>
+
+                <div
+                  class="task-item priority-high"
+                  data-status="pending"
+                  data-week="1"
                 >
                   <div class="task-title">Retours et Remarques</div>
                   <div class="task-details">
-                    <strong>En attente :</strong> Transmission des remarques
-                    relevées lors de la réunion du 21/05/2025
-                  </div>
-                  <div class="task-description">
-                    • Compilation des remarques de chaque partie prenante<br />
-                    • Priorisation des modifications demandées<br />
-                    • Impact des changements sur le planning global
+                    <strong>En attente client :</strong> Transmission des
+                    remarques relevées lors de la réunion du 21/05/2025.
                   </div>
                   <div class="task-date">📅 Semaine 1 (Juin 2025)</div>
                   <div class="responsible">Toutes les parties</div>
-                  <div class="status-badge status-pending">En attente</div>
+                  <div class="status-badge status-pending">En attente Client</div>
+                </div>
+
+                <div
+                  class="task-item priority-high"
+                  data-status="pending"
+                  data-week="7-8"
+                >
+                  <div class="task-title">Tests et Validation</div>
+                  <div class="task-details">
+                    <strong>En attente client :</strong> Organiser les sessions
+                    de test et valider toutes les modifications implémentées.
+                  </div>
+                  <div class="task-date">📅 Semaine 7-8 (Juillet 2025)</div>
+                  <div class="responsible">Netopia + DF</div>
+                  <div class="status-badge status-pending">En attente Client</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- SECTION TERMINE -->
+          <div class="section">
+            <div class="section-header">✅ Terminé</div>
+            <div class="section-content">
+              <div class="task-grid">
+                <div
+                  class="task-item priority-low"
+                  data-status="completed"
+                  data-week="1-2"
+                >
+                  <div class="task-title">Atelier Formules de Calcul</div>
+                  <div class="task-details">
+                    Définir et valider les formules de calcul des subventions
+                    avec les équipes techniques.
+                  </div>
+                  <div class="task-date">📅 Semaine 1-2 (Juin 2025)</div>
+                  <div class="responsible">Netopia + DSI</div>
+                  <div class="status-badge status-completed">Terminé</div>
+                </div>
+
+                <div
+                  class="task-item priority-low"
+                  data-status="completed"
+                  data-week="2-4"
+                >
+                  <div class="task-title">Référentiel des Subventions</div>
+                  <div class="task-details">
+                    Implémentation complète du référentiel et du paramétrage des
+                    subventions.
+                  </div>
+                  <div class="task-date">📅 Semaine 2-4 (Juin 2025)</div>
+                  <div class="responsible">Netopia</div>
+                  <div class="status-badge status-completed">Terminé</div>
+                </div>
+
+                <div
+                  class="task-item priority-low"
+                  data-status="completed"
+                  data-week="3-4"
+                >
+                  <div class="task-title">Formulaire de Dépôt</div>
+                  <div class="task-details">
+                    Intégrer toutes les modifications demandées sur le
+                    formulaire de dépôt de dossier.
+                  </div>
+                  <div class="task-date">📅 Semaine 3-4 (Juin 2025)</div>
+                  <div class="responsible">Netopia</div>
+                  <div class="status-badge status-completed">Terminé</div>
                 </div>
               </div>
             </div>
@@ -962,7 +898,7 @@
         </div>
 
         <!-- Gantt Tab Content -->
-        <div id="gantt-tab" class="tab-content active">
+        <div id="gantt-tab" class="tab-content">
           <div class="section">
             <div class="section-header">📊 Diagramme de Gantt</div>
             <div class="section-content">
@@ -1121,79 +1057,18 @@
           });
         });
 
-        // Gantt chart data
+        // Gantt chart data - UPDATED
         const ganttData = [
           {
-            label: "Ateliers et Réunions",
+            label: "🚀 En Cours",
             tasks: [
-              {
-                id: "atelier-formules",
-                label: "Atelier Formules de Calcul",
-                start: 1,
-                end: 2,
-                status: "pending",
-                priority: "high",
-              },
               {
                 id: "validation-workflows",
                 label: "Validation des Workflows",
                 start: 2,
                 end: 3,
-                status: "pending",
-                priority: "high",
-              },
-              {
-                id: "gestion-eligibilite",
-                label: "Gestion de l'Éligibilité",
-                start: 4,
-                end: 5,
-                status: "planned",
-                priority: "medium",
-              },
-              {
-                id: "tests-validation",
-                label: "Tests et Validation",
-                start: 7,
-                end: 8,
-                status: "planned",
-                priority: "medium",
-              },
-            ],
-          },
-          {
-            label: "Actions Techniques",
-            tasks: [
-              {
-                id: "modeles-recepisse",
-                label: "Modèles de Récépissé",
-                start: 1,
-                end: 2,
                 status: "in-progress",
                 priority: "high",
-              },
-              {
-                id: "referentiel-subventions",
-                label: "Référentiel des Subventions",
-                start: 2,
-                end: 4,
-                status: "pending",
-                priority: "high",
-              },
-              {
-                id: "formulaire-depot",
-                label: "Formulaire de Dépôt",
-                start: 3,
-                end: 4,
-                status: "planned",
-                priority: "medium",
-              },
-              {
-                id: "notifications-sms",
-                label: "Notifications SMS",
-                start: 5,
-                end: 6,
-                status: "planned",
-                priority: "low",
               },
               {
                 id: "statuts-traitement",
@@ -1204,17 +1079,33 @@
                 priority: "high",
               },
               {
-                id: "infrastructure-technique",
-                label: "Infrastructure Technique",
+                id: "notifications-sms",
+                label: "Notifications SMS",
+                start: 5,
+                end: 6,
+                status: "in-progress",
+                priority: "medium",
+              },
+              {
+                id: "gestion-eligibilite",
+                label: "Gestion de l'Éligibilité",
+                start: 4,
+                end: 5,
+                status: "in-progress",
+                priority: "medium",
+              },
+              {
+                id: "modeles-recepisse",
+                label: "Modèles de Récépissé",
                 start: 1,
-                end: 1,
-                status: "pending",
+                end: 2,
+                status: "in-progress",
                 priority: "high",
               },
             ],
           },
           {
-            label: "Points Critiques",
+            label: "⏳ En Attente Client",
             tasks: [
               {
                 id: "acces-systemes",
@@ -1225,12 +1116,57 @@
                 priority: "high",
               },
               {
+                id: "infrastructure-technique",
+                label: "Infrastructure Technique",
+                start: 1,
+                end: 1,
+                status: "pending",
+                priority: "high",
+              },
+              {
                 id: "retours-remarques",
                 label: "Retours et Remarques",
                 start: 1,
                 end: 1,
                 status: "pending",
                 priority: "high",
+              },
+              {
+                id: "tests-validation",
+                label: "Tests et Validation",
+                start: 7,
+                end: 8,
+                status: "pending",
+                priority: "high",
+              },
+            ],
+          },
+          {
+            label: "✅ Terminé",
+            tasks: [
+              {
+                id: "atelier-formules",
+                label: "Atelier Formules de Calcul",
+                start: 1,
+                end: 2,
+                status: "completed",
+                priority: "low",
+              },
+              {
+                id: "referentiel-subventions",
+                label: "Référentiel des Subventions",
+                start: 2,
+                end: 4,
+                status: "completed",
+                priority: "low",
+              },
+              {
+                id: "formulaire-depot",
+                label: "Formulaire de Dépôt",
+                start: 3,
+                end: 4,
+                status: "completed",
+                priority: "low",
               },
             ],
           },
